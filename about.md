@@ -4,8 +4,6 @@ title: About
 permalink: /about/
 ---
 
-Cloud Security Architect for a Financial instituion. I have a long experience working with private, hybrid and public cloud solutions. The past years I've been focusing on cybersecurity and cloud.
+I am a Cloud Security Architect for a Financial institution in New York City. My years of experience has been while working with private, hybrid and public cloud solutions. The past years I've been mostly into cybersecurity, cloud and culture. I like PowerShell and am a learner of Python. I am public speaker and have presented at multiple infrastructure and security conferences across Europe.
 
-I've recently relocated from Oslo, Norway to New York City to participate actively in the regions cybersecurity communities.
-
-You can find me on  [Twitter](https://twitter.com/KarimMelhaoui) and [LinkedIn](https://www.linkedin.com/in/karim-el-melhaoui-34691956/)
+You may find me on  [Twitter](https://twitter.com/KarimMelhaoui) and [LinkedIn](https://www.linkedin.com/in/karim-el-melhaoui-34691956/)
