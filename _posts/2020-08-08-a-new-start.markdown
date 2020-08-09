@@ -16,5 +16,5 @@ The goal of having a blog is to share my experiences and interact with peers. Id
 
 
 
-![GitHub Logo](/image/nycfirstpicture.jpg)
+![](/image/nycfirstpicture.jpg)
 *My first picture taken after arriving NYC*
