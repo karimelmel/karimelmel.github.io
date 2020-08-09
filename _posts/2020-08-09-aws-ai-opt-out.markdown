@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "AWS AI opt-out"
+title:  "AWS AI Data Sharing Opt-out"
 date:   2020-08-09
 ---
 
@@ -12,17 +12,9 @@ A few months ago it was discovered that AWS had updated their Terms and Conditio
 There are a few steps required to disable the sharing that is documented by AWS:
 [https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out_create.html](https://docs.aws.amazon.com/organizations/latest/userguide/orgs_manage_policies_ai-opt-out_create.html)
 
-I decided to create a script using the AWS SDK for Pyton (boto3) that enables this. My main motivation for creating this script is that I'm learning Python and want to ensure opt-out in my organizations.
+I decided to create a script using the AWS SDK for Python (boto3) that enables this. My main motivation for creating this script is that I am in the process learning Python and also want to ensure opt-out in my organizations.
 
-The script will
-<ol>
-<li>List the root-id for the organization</li>
-<li>Enable the policy type for AI that is required before you can attach an opt-out policy</li>
-<li>Create the AI opt-out policy with scope default, which includes all the services</li>
-<li>Attach the policy to the organization root, applying to all accounts in the organization.</li>
-</ol>
-
-<b> To run the script, the following IAM policy is required: </b>
+<b> To run the script, the following IAM policy is at least required: </b>
 ```
 {
     "Version": "2012-10-17",
@@ -59,8 +51,6 @@ The script will
 <li>Create the AI opt-out policy with scope default, which includes all the services</li>
 <li>Attach the policy to the organization root, applying to all accounts in the organization.</li>
 </ol>
-
-
 
 ```
 import boto3
@@ -150,4 +140,6 @@ if __name__ == '__main__':
 ```
 {: .language-python}
 
-The script can also be found here: [https://github.com/karimelmel/aws-python-samples/blob/master/ai-opt-out.py](https://github.com/karimelmel/aws-python-samples/blob/master/ai-opt-out.py)
+The script can also be found here: [https://github.com/karimelmel/aws-python-samples/blob/master/ai-opt-out.py](https://github.com/karimelmel/aws-python-samples/blob/master/ai-opt-out.py).
+
+Reach out to me on [Twitter](https://twitter.com/karimmelhaoui) if you have any feedback.
