@@ -12,27 +12,30 @@ To perform my assessment I start looking into the service, which is deployed thr
 The first element that of interest in the stack is the AMI. It references the an AMI per region, which is consistent to a very outdated version of Amazon Linux (not 2). For us-east-1 the AMI is ami-7f6aa912, which was last updated June, 22 2016. 
 ![](/image/ami.JPG)
 
-Between then and now there is a total of 591 security advisories issues and more than 1000 CVEs for this image. And guess what, this server is externally exposed. The complete list can be found here (https://alas.aws.amazon.com/)
+Between then and now there is a total of 591 security advisories issued and more than 1000 CVEs. On top of that, the server is externally exposed so this can become interesting. The complete list can be found here (https://alas.aws.amazon.com/)
 
 Taking a closer look at the instance profile it has access to a multitude of API calls, mainly **Get**, **Describe**, and **List** actions. The most powerful action would be s3:Get* without any resource constraint, meaning it can be used to read items from S3 buckets with weak configuration, such as allowing ${AccountId}:root which I commonly come across.
 
-Moving over to the network part, it either uses the Default VPC in an account *or* it creates a new VPC called CloudFormerVPC with an Internet Gateway and public route attached.
+As for the network it either uses the Default VPC in an account *or* it creates a new VPC called CloudFormerVPC with an Internet Gateway and public route attached to it.
 
 ### Bootstrap
-The bootstrap in the script performs multiple actions, including
-
+The bootstrap in the script performs multiple actions, including:
 - Installing and configuring all dependencies
 - Installing CloudFormer
 - Generating a self-signed certificate
 - Configuring the web service with the password provided in the template
 - Starting the web service
 
+
 ### The web service
 Once the stack is launched, the server is exposing a Basic Authentication endpoint over https through its public interface 
 
 ![](/image/auth.JPG)
 
-The username/password provided in the stack will give you access the the interface through SSH. 
+The username/password provided in the stack will give you access the the interface through SSH. From here the application is exposed. 
+
+What is interesting here is if you break into the web service in a production account you can perform reconnaissance by discovering what AWS resources is available in the environment and have it printed out in CloudFormation. Since it does not read existing cfn templates, I did not find a way to directly extract secrets.
+![](/image/recon.JPG)
 
 ## Accessing the instance
 What I am interested in to better understand what is going on, is getting access to the instance so I can look at the source code directly. Backdooring the instance is quite trivial, you can modify the cloudformation stack to include an SSH key or modify the embedded userdata before deploying the stack. 
@@ -54,9 +57,10 @@ https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3
 https://nvd.nist.gov/vuln/detail/CVE-2020-8184
 https://nvd.nist.gov/vuln/detail/CVE-2020-8161
 
+Besides that, there is not much interesting in the instance and I can't find any evidence o. It does however happen to contain all the source code, dependencies and logs for the service.
 
-## Architecture
-Looking into the cloudformer directory, I find all the code and a README file which helps me better understand the architecture.
+## Next steps
+Looking into the cloudformer directory, I find all the code and a README file which helps me better understand the architecture, I also get access to all the source code.
 
 ```   
 |   `-- tasks
@@ -146,6 +150,4 @@ vendor
   vendor/rails/. This directory is in the load path.
   ```
 
-## Next steps
-
-This overview will be useful for Part II where I will attempt to dig deeper into the web application security for cloudformer.
+This overview will be useful for Part II where I will attempt to dig deeper into the web application security for cloudformer. Stay tuned for more. If its possible to gain control over the instance, the most useful permission would be to enumerate all S3 buckets and try to exfiltrate the content.
