@@ -56,8 +56,8 @@ A quick glance at the gemfile containing all the dependencies reveals a large nu
 - [https://nvd.nist.gov/vuln/detail/CVE-2019-5477](https://nvd.nist.gov/vuln/detail/CVE-2019-5477)
 - [https://nvd.nist.gov/vuln/detail/CVE-2020-7595](https://nvd.nist.gov/vuln/detail/CVE-2020-7595)
 - [https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3](https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3)
-[https://nvd.nist.gov/vuln/detail/CVE-2020-8184](https://nvd.nist.gov/vuln/detail/CVE-2020-8184)
-[https://nvd.nist.gov/vuln/detail/CVE-2020-8161](https://nvd.nist.gov/vuln/detail/CVE-2020-8161)
+- [https://nvd.nist.gov/vuln/detail/CVE-2020-8184](https://nvd.nist.gov/vuln/detail/CVE-2020-8184)
+- [https://nvd.nist.gov/vuln/detail/CVE-2020-8161](https://nvd.nist.gov/vuln/detail/CVE-2020-8161)
 
 Besides that, there is not much interesting in the instance and there are no signs of outbound connections to AWS. What is great about having access to the instance is that it happens to contain all the source code, dependencies and logs for the service that may prove helpful.
 
