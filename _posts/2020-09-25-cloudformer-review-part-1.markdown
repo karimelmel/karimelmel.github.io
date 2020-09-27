@@ -48,15 +48,14 @@ I simply added a key that I have uploaded to AWS and have access to into the cfn
 This gives me acccess to the instance once its deployed
 ![](/image/instance.JPG)
 
-A quick glance at the dependencies reveals a large number of vulnerabilities.
-
-[https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv](https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv)
-[https://nvd.nist.gov/vuln/detail/CVE-2020-8163](https://nvd.nist.gov/vuln/detail/CVE-2020-8163)
-[https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5](https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5)
-[https://nvd.nist.gov/vuln/detail/CVE-2020-10663](https://nvd.nist.gov/vuln/detail/CVE-2020-10663)
-[https://nvd.nist.gov/vuln/detail/CVE-2019-5477](https://nvd.nist.gov/vuln/detail/CVE-2019-5477)
-[https://nvd.nist.gov/vuln/detail/CVE-2020-7595](https://nvd.nist.gov/vuln/detail/CVE-2020-7595)
-[https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3](https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3)
+A quick glance at the dependencies reveals a large number of vulnerabilities> 
+- [https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv](https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv)
+- [https://nvd.nist.gov/vuln/detail/CVE-2020-8163](https://nvd.nist.gov/vuln/detail/CVE-2020-8163)
+- [https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5](https://github.com/rails/rails/security/advisories/- GHSA-cfjv-5498-mph5)
+- [https://nvd.nist.gov/vuln/detail/CVE-2020-10663](https://nvd.nist.gov/vuln/detail/CVE-2020-10663)
+- [https://nvd.nist.gov/vuln/detail/CVE-2019-5477](https://nvd.nist.gov/vuln/detail/CVE-2019-5477)
+- [https://nvd.nist.gov/vuln/detail/CVE-2020-7595](https://nvd.nist.gov/vuln/detail/CVE-2020-7595)
+- [https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3](https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3)
 [https://nvd.nist.gov/vuln/detail/CVE-2020-8184](https://nvd.nist.gov/vuln/detail/CVE-2020-8184)
 [https://nvd.nist.gov/vuln/detail/CVE-2020-8161](https://nvd.nist.gov/vuln/detail/CVE-2020-8161)
 
