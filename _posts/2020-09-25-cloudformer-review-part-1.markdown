@@ -34,7 +34,7 @@ Once the stack is launched, the server is exposing a Basic Authentication endpoi
 
 ![](/image/auth.JPG)
 
-The username/password provided in the stack will give you access the the interface through SSH. From here the application is exposed. 
+The username/password provided in the stack will give you access the the interface through HTTPS where the application is exposed. 
 
 What is interesting here is if you break into the web service in a production account you can perform reconnaissance by discovering what AWS resources is available in the environment and have it printed out in CloudFormation. Since it does not read existing cfn templates, I did not find a way to directly extract secrets.
 ![](/image/recon.JPG)
