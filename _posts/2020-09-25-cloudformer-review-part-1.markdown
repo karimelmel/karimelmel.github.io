@@ -48,7 +48,7 @@ I simply added a key that I have uploaded to AWS and have access to into the cfn
 This gives me acccess to the instance once its deployed
 ![](/image/instance.JPG)
 
-A quick glance at the dependencies reveals a large number of vulnerabilities> 
+A quick glance at the gemfile containing all the dependencies reveals a large number of vulnerabilities in the outdated dependencies:
 - [https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv](https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv)
 - [https://nvd.nist.gov/vuln/detail/CVE-2020-8163](https://nvd.nist.gov/vuln/detail/CVE-2020-8163)
 - [https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5](https://github.com/rails/rails/security/advisories/- GHSA-cfjv-5498-mph5)
@@ -62,7 +62,7 @@ A quick glance at the dependencies reveals a large number of vulnerabilities>
 Besides that, there is not much interesting in the instance and there are no signs of outbound connections to AWS. What is great about having access to the instance is that it happens to contain all the source code, dependencies and logs for the service that may prove helpful.
 
 ## Next steps
-Looking into the cloudformer directory, I find all the code and a README file which helps me better understand the architecture, I also get access to all the source code.
+Inside the cloudformer directory on the EC2 there is a README file which helps me better understand the architecture, this is also where all the source code can be found.
 
 ```   
 |   `-- tasks
