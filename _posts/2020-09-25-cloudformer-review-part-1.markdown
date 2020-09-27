@@ -41,7 +41,8 @@ What is interesting here is if you break into the web service in a production ac
 
 ## Accessing the instance
 What I am interested in to better understand what is going on, is getting access to the instance so I can look at the source code directly. Backdooring the instance is quite trivial, you can modify the cloudformation stack to include an SSH key or modify the embedded userdata before deploying the stack. 
-I simple added a key that I have access to in the cfn stack and attached a security group allowing port 22 from my public IP. 
+I simply added a key that I have uploaded to AWS and have access to into the cfn stack and attached a security group allowing port 22 from my public IP. 
+
 ![](/image/cfnupdate.JPG)
 
 This gives me acccess to the instance once its deployed
