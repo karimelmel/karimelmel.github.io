@@ -4,16 +4,18 @@ title:  "CloudFormer review part I - The stack"
 date:   2020-09-25
 ---
 
-Recently I was tasked to have a closer look at CloudFormer, a tool created by Amazon Web Services that helps create CloudFormation templates of existing resources within an account. At first glance I thought this was a completely new service, since it is still marked as Beta in the docs here: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html), but the pictures in the documentation has the old GUI and there is also an old blog post mentioning [CloudFormer](https://aws.amazon.com/blogs/devops/building-aws-cloudformation-templates-using-cloudformer). 
+Recently I was tasked to have a closer look at CloudFormer, a tool created by Amazon Web Services that helps create CloudFormation templates of existing resources within an account. At first glance I thought this was a completely new service, since it is still marked as Beta in the docs here: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html), but the pictures in the documentation has the old GUI and there is also an old blog post mentioning [CloudFormer](https://aws.amazon.com/blogs/devops/building-aws-cloudformation-templates-using-cloudformer) back in 2013. 
 
-To perform my assessment I start looking into the service, which is deployed through a CloudFormation stack. Getting a hold of the stack is my first priority ![](/image/cloudformerstack.jpg) and is very straight forward. By pretending to launch the stack I can view it in Designer, export it and start reviewing. If you want to have a look at the full stack I've uploaded it here [CloudFormer stack](https://gist.github.com/karimelmel/f5a0e9c975bc9b43fd3371c27662f090).
+I started by looking into the service, which is deployed through a CloudFormation stack. Getting a hold of the stack is my first priority ![](/image/cloudformerstack.jpg) and is very straight forward. By pretending to launch the stack I can view it in Designer, export it and start reviewing. If you want to have a look at the full stack for yourself I've uploaded it as a gist here [CloudFormer stack](https://gist.github.com/karimelmel/f5a0e9c975bc9b43fd3371c27662f090).
 
 ## The stack
-The first element that of interest in the stack is the AMI. It references the an AMI per region, which is consistent to a very outdated version of Amazon Linux (not 2). For us-east-1 the AMI is ami-7f6aa912, which was last updated June, 22 2016. 
+The first element I find interesting is the AMI. It references an AMI per region, which is consistent to a very outdated version of Amazon Linux (the predecessor of Amazon Linux 2). For us-east-1 the AMI is ami-7f6aa912, which was last updated June, 22 2016. 
 ![](/image/ami.JPG)
 
-Between then and now there is a total of 591 security advisories issued and more than 1000 CVEs. On top of that, the server is externally exposed so this can become interesting. The complete list can be found here (https://alas.aws.amazon.com/)
+Between then and now there is a total of 591 security advisories issued and more than 1000 CVEs. On top of that, the server is externally exposed so this can become interesting. The complete list of advisories can be found here [https://alas.aws.amazon.com/](https://alas.aws.amazon.com/)
 
+
+### Instance profile
 Taking a closer look at the instance profile it has access to a multitude of API calls, mainly **Get**, **Describe**, and **List** actions. The most powerful action would be s3:Get* without any resource constraint, meaning it can be used to read items from S3 buckets with weak configuration, such as allowing ${AccountId}:root which I commonly come across.
 
 As for the network it either uses the Default VPC in an account *or* it creates a new VPC called CloudFormerVPC with an Internet Gateway and public route attached to it.
@@ -27,7 +29,7 @@ The bootstrap in the script performs multiple actions, including:
 - Starting the web service
 
 
-### The web service
+### Web service
 Once the stack is launched, the server is exposing a Basic Authentication endpoint over https through its public interface 
 
 ![](/image/auth.JPG)
@@ -47,17 +49,17 @@ This gives me acccess to the instance once its deployed
 
 A quick glance at the dependencies reveals a large number of vulnerabilities.
 
-https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv
-https://nvd.nist.gov/vuln/detail/CVE-2020-8163
-https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5
-https://nvd.nist.gov/vuln/detail/CVE-2020-10663
-https://nvd.nist.gov/vuln/detail/CVE-2019-5477
-https://nvd.nist.gov/vuln/detail/CVE-2020-7595
-https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3
-https://nvd.nist.gov/vuln/detail/CVE-2020-8184
-https://nvd.nist.gov/vuln/detail/CVE-2020-8161
+[https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv](https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv)
+[https://nvd.nist.gov/vuln/detail/CVE-2020-8163](https://nvd.nist.gov/vuln/detail/CVE-2020-8163)
+[https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5](https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5)
+[https://nvd.nist.gov/vuln/detail/CVE-2020-10663](https://nvd.nist.gov/vuln/detail/CVE-2020-10663)
+[https://nvd.nist.gov/vuln/detail/CVE-2019-5477](https://nvd.nist.gov/vuln/detail/CVE-2019-5477)
+[https://nvd.nist.gov/vuln/detail/CVE-2020-7595](https://nvd.nist.gov/vuln/detail/CVE-2020-7595)
+[https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3](https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3)
+[https://nvd.nist.gov/vuln/detail/CVE-2020-8184](https://nvd.nist.gov/vuln/detail/CVE-2020-8184)
+[https://nvd.nist.gov/vuln/detail/CVE-2020-8161](https://nvd.nist.gov/vuln/detail/CVE-2020-8161)
 
-Besides that, there is not much interesting in the instance and I can't find any evidence o. It does however happen to contain all the source code, dependencies and logs for the service.
+Besides that, there is not much interesting in the instance and there are no signs of outbound connections to AWS. What is great about having access to the instance is that it happens to contain all the source code, dependencies and logs for the service that may prove helpful.
 
 ## Next steps
 Looking into the cloudformer directory, I find all the code and a README file which helps me better understand the architecture, I also get access to all the source code.
