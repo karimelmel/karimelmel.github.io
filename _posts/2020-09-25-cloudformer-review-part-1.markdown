@@ -10,7 +10,7 @@ To perform my assessment I start looking into the service, which is deployed thr
 
 ## The stack
 The first element that of interest in the stack is the AMI. It references the an AMI per region, which is consistent to a very outdated version of Amazon Linux (not 2). For us-east-1 the AMI is ami-7f6aa912, which was last updated June, 22 2016. 
-![image/ami.jpg]
+![](/image/ami.jpg)
 
 Between then and now there is a total of 591 security advisories issues and more than 1000 CVEs for this image. And guess what, this server is externally exposed. The complete list can be found here (https://alas.aws.amazon.com/)
 
@@ -29,14 +29,14 @@ The bootstrap in the script performs multiple actions, including
 
 ## Accessing the web service
 Once the stack is launched, the server is exposing a Basic Authentication endpoint over https through its public interface 
-![image/auth.jpg]
+![](/image/auth.jpg)
 
 The username/password provided in the stack will give you access the the interface through SSH. 
 
 ## Accessing the instance
 What I am interested in to better understand what is going on, is getting access to the instance so I can look at the source code directly. Backdooring the instance is quite trivial, you can modify the cloudformation stack to include an SSH key or modify the embedded userdata before deploying the stack. 
 I simple added a key that I have access to in the cfn stack and attached a security group allowing port 22 from my public IP. 
-![image/cfnupdate.jpg]
+![](/image/cfnupdate.jpg)
 
 This gives me acccess to the instance once its deployed
 ![image/instance.jpg]
@@ -145,4 +145,6 @@ vendor
   vendor/rails/. This directory is in the load path.
   ```
 
-This will be useful for Part II where I will attempt to dig deeper into the web application security for this application. 
+## Next steps
+
+This will be useful for Part II where I will attempt to dig deeper into the web application security for this application.
