@@ -6,11 +6,12 @@ date:   2020-09-25
 
 Recently I was tasked to have a closer look at CloudFormer, a tool created by Amazon Web Services that helps create CloudFormation templates of existing resources within an account. At first glance I thought this was a completely new service, since it is still marked as Beta in the docs here: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html), but the pictures in the documentation has the old GUI and there is also an old blog post mentioning [CloudFormer](https://aws.amazon.com/blogs/devops/building-aws-cloudformation-templates-using-cloudformer). 
 
-To perform my assessment I start looking into the service, which is deployed through a CloudFormation stack. Getting a hold of the stack is my first priority![](/image/cloudformerstack.jpg) and is very straight forward. By pretending to launch the stack I can view it in Designer, export it and start reviewing. If you want to have a look at the full stack I've uploaded it here [CloudFormer stack](https://gist.github.com/karimelmel/f5a0e9c975bc9b43fd3371c27662f090).
+To perform my assessment I start looking into the service, which is deployed through a CloudFormation stack. Getting a hold of the stack is my first priority ![](/image/cloudformerstack.jpg) and is very straight forward. By pretending to launch the stack I can view it in Designer, export it and start reviewing. If you want to have a look at the full stack I've uploaded it here [CloudFormer stack](https://gist.github.com/karimelmel/f5a0e9c975bc9b43fd3371c27662f090).
 
 ## The stack
 The first element that of interest in the stack is the AMI. It references the an AMI per region, which is consistent to a very outdated version of Amazon Linux (not 2). For us-east-1 the AMI is ami-7f6aa912, which was last updated June, 22 2016. 
 ![](/image/ami.jpg)
+
 
 Between then and now there is a total of 591 security advisories issues and more than 1000 CVEs for this image. And guess what, this server is externally exposed. The complete list can be found here (https://alas.aws.amazon.com/)
 
@@ -24,12 +25,14 @@ The bootstrap in the script performs multiple actions, including
 - Installing and configuring all dependencies
 - Installing CloudFormer
 - Generating a self-signed certificate
-- Configurring the web service with the password provided in the template
+- Configuring the web service with the password provided in the template
 - Starting the web service
 
 ## Accessing the web service
 Once the stack is launched, the server is exposing a Basic Authentication endpoint over https through its public interface 
+
 ![](/image/auth.jpg)
+
 
 The username/password provided in the stack will give you access the the interface through SSH. 
 
@@ -147,4 +150,4 @@ vendor
 
 ## Next steps
 
-This will be useful for Part II where I will attempt to dig deeper into the web application security for this application.
+This overview will be useful for Part II where I will attempt to dig deeper into the web application security for cloudformer.
