@@ -43,7 +43,7 @@ create_accounts_csv()
 ```
 {: .language-python}
 
-I first wrote this without using a Paginator but if you have a large volume of accounts it more trivial to use Paginator rather than NextToken.
+I first wrote this without using a Paginator but if you have a large volume of accounts it is more trivial to use Paginator rather than NextToken.
 
 ### Why would you do this
 
