@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AWS Detective Account CSV file"
-date:   2020-09-25
+date:   2020-10-12
 ---
 
 As most should be familiar by now, you can setup [Delegated Admin for both GuardDuty and Access Analyzer](https://summitroute.com/blog/2020/05/04/delegated_admin_with_guardduty_and_access_analyzer/). This feature haven't yet been made available for Detective but Amazon have provided scripts that allows setting up Detective in all accounts with a cross-account role. The scripts be found here 
@@ -21,26 +21,30 @@ I've been searching for a way to do this programmatically, I eventually learned 
 With this ability to export the Organizations members, I can now programmatically retrieve a list of accounts and store them in a CSV file without having to access the GUI or have someone export it from the Organization master account by using the code embedded below. Note that this can only run on an account with Delegated Admin or Organizaton Master:
 
 ```
-# Exports Organizations members as CSV to be used as input for Amazon Detective
 import boto3
 import json
 import csv
 import os
 
+# Exports Organizations members as CSV to be used as input for Amazon Detective
+
 client = boto3.client('organizations')
 
 def create_accounts_csv():
-    response = client.list_accounts()
-    for i in range(len(response)):
-        with open('accounts.csv', mode='w', newline='') as accounts_file:
-            for i in range(len(response)):
-                writer = csv.writer(accounts_file, dialect='excel', delimiter='"',lineterminator='')
-                writer.writerow([(response['Accounts'][i]['Email']+',')])
-                writer.writerow([(response['Accounts'][i]['Id']+'\n')])
+    paginator = client.get_paginator('list_accounts')
+    page_iterator = paginator.paginate()
+    with open('accounts.csv', mode='w', newline='') as accounts_file:
+        writer = csv.writer(accounts_file, dialect='excel', delimiter='"', lineterminator='')
+        for r in page_iterator:
+            for key in r['Accounts']:
+                writer.writerows(key['Id']+',')
+                writer.writerows(key['Email']+'\n')
 
 create_accounts_csv()
 ```
 {: .language-python}
+
+I first wrote this without using a Paginator but if you have a large volume of accounts it more trivial to use Paginator rather than NextToken.
 
 ### Why would you do this
 
