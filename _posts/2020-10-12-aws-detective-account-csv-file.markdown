@@ -22,7 +22,6 @@ With this ability to export the Organizations members, I can now programmaticall
 
 ```
 import boto3
-import json
 import csv
 import os
 
