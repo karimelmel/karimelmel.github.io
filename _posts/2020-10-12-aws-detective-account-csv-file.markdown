@@ -4,7 +4,8 @@ title:  "AWS Detective Account CSV file"
 date:   2020-09-25
 ---
 
-As most should be familiar by now, you can setup [Delegated Admin for both GuardDuty and Access Analyzer](https://summitroute.com/blog/2020/05/04/delegated_admin_with_guardduty_and_access_analyzer/). This feature haven't yet been made available for Detective but Amazon have provided scripts that allows setting up Detective in all accounts with a cross-account role. The scripts be found here [https://github.com/aws-samples/amazon-detective-multiaccount-scripts](https://github.com/aws-samples/amazon-detective-multiaccount-scripts). 
+As most should be familiar by now, you can setup [Delegated Admin for both GuardDuty and Access Analyzer](https://summitroute.com/blog/2020/05/04/delegated_admin_with_guardduty_and_access_analyzer/). This feature haven't yet been made available for Detective but Amazon have provided scripts that allows setting up Detective in all accounts with a cross-account role. The scripts be found here 
+[https://github.com/aws-samples/amazon-detective-multiaccount-scripts](https://github.com/aws-samples/amazon-detective-multiaccount-scripts). 
 
 The only thing that was stopping me from automating this for all new accounts is that the CSV list had to be generated, which can be exported from the GUI in GuardDuty or programmatically through the Master account. Below example displays the export capability for GuardDuty master:
 
@@ -13,7 +14,7 @@ The only thing that was stopping me from automating this for all new accounts is
 
 ### Programmatically retrieving accounts from Delegated Master
 
-I've been searching for a way to do this programmatically, I eventually learned after [ranting on Twitter](https://twitter.com/fvant/status/1313736138499272706) that if GuardDuty is configured through Delegated Admin, it can be retrieved through the [Organizations SDK(https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/organizations.html#Organizations.Client.list_accounts)] but not through the GuardDuty SDK as documented. In the event where GuardDuty is setup with invitiations, it can be retrieved using the GuardDuty SDK as documented.
+I've been searching for a way to do this programmatically, I eventually learned after [ranting on Twitter](https://twitter.com/fvant/status/1313736138499272706) that if GuardDuty is configured through Delegated Admin, it can be retrieved through the [Organizations SDK](https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/organizations.html#Organizations.Client.list_accounts) but not through the GuardDuty SDK as documented. In the event where GuardDuty is setup with invitiations, it can be retrieved using the GuardDuty SDK as documented.
 
 ![](/image/gdexport2.JPG)
 
