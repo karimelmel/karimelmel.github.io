@@ -11,7 +11,7 @@ The only thing that was stopping me from automating this for all new accounts is
 ![](/image/gdexport.JPG)
 
 
-## Programmatically retrieving accounts from Delegated Master
+### Programmatically retrieving accounts from Delegated Master
 
 I've been searching for a way to do this programmatically, I eventually learned after [ranting on Twitter](https://twitter.com/fvant/status/1313736138499272706) that if GuardDuty is configured through Delegated Admin, it can be retrieved through the [Organizations SDK(https://boto3.amazonaws.com/v1/documentation/api/latest/reference/services/organizations.html#Organizations.Client.list_accounts)] but not through the GuardDuty SDK as documented. In the event where GuardDuty is setup with invitiations, it can be retrieved using the GuardDuty SDK as documented.
 
