@@ -34,7 +34,7 @@ Once the stack is launched, the server is exposing a Basic Authentication endpoi
 
 ![](/image/auth.JPG)
 
-The username/password provided in the stack will give you access the the interface through SSH. From here the application is exposed. 
+The username/password provided in the stack will give you access the the interface through HTTPS where the application is exposed. 
 
 What is interesting here is if you break into the web service in a production account you can perform reconnaissance by discovering what AWS resources is available in the environment and have it printed out in CloudFormation. Since it does not read existing cfn templates, I did not find a way to directly extract secrets.
 ![](/image/recon.JPG)
@@ -51,13 +51,13 @@ This gives me acccess to the instance once its deployed
 A quick glance at the gemfile containing all the dependencies reveals a large number of vulnerabilities in the outdated dependencies:
 - [https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv](https://github.com/rails/rails/security/advisories/GHSA-65cv-r6x7-79hv)
 - [https://nvd.nist.gov/vuln/detail/CVE-2020-8163](https://nvd.nist.gov/vuln/detail/CVE-2020-8163)
-- [https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5](https://github.com/rails/rails/security/advisories/- GHSA-cfjv-5498-mph5)
+- [https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5](https://github.com/rails/rails/security/advisories/GHSA-cfjv-5498-mph5)
 - [https://nvd.nist.gov/vuln/detail/CVE-2020-10663](https://nvd.nist.gov/vuln/detail/CVE-2020-10663)
 - [https://nvd.nist.gov/vuln/detail/CVE-2019-5477](https://nvd.nist.gov/vuln/detail/CVE-2019-5477)
 - [https://nvd.nist.gov/vuln/detail/CVE-2020-7595](https://nvd.nist.gov/vuln/detail/CVE-2020-7595)
 - [https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3](https://github.com/rack/rack/security/advisories/GHSA-hrqr-hxpp-chr3)
-[https://nvd.nist.gov/vuln/detail/CVE-2020-8184](https://nvd.nist.gov/vuln/detail/CVE-2020-8184)
-[https://nvd.nist.gov/vuln/detail/CVE-2020-8161](https://nvd.nist.gov/vuln/detail/CVE-2020-8161)
+- [https://nvd.nist.gov/vuln/detail/CVE-2020-8184](https://nvd.nist.gov/vuln/detail/CVE-2020-8184)
+- [https://nvd.nist.gov/vuln/detail/CVE-2020-8161](https://nvd.nist.gov/vuln/detail/CVE-2020-8161)
 
 Besides that, there is not much interesting in the instance and there are no signs of outbound connections to AWS. What is great about having access to the instance is that it happens to contain all the source code, dependencies and logs for the service that may prove helpful.
 
