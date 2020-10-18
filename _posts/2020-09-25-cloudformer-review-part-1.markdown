@@ -4,9 +4,9 @@ title:  "CloudFormer review part I - The stack"
 date:   2020-09-25
 ---
 
-## Update 10/18/2020
+#### Update 10/18/2020 Amazon has decided to deprecate CloudFormer  as a result of the security issues that were reported.
 
-Amazon has decided to deprecate CloudFormer ![](/image/cloudformerdoc.png) as a result of the security issues that were reported.
+![](/image/cloudformerdoc.png)
 
 ## Background
 
