@@ -4,6 +4,12 @@ title:  "CloudFormer review part I - The stack"
 date:   2020-09-25
 ---
 
+## Update 10/18/2020
+
+Amazon has decided to deprecate CloudFormer ![](/image/cloudformerdoc.png) as a result of the security issues that were reported.
+
+## Background
+
 Recently I was tasked to have a closer look at CloudFormer, a tool created by Amazon Web Services that helps create CloudFormation templates of existing resources within an account. At first glance I thought this was a completely new service, since it is still marked as Beta in the docs here: [https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/cfn-using-cloudformer.html), but the pictures in the documentation has the old GUI and there is also an old blog post mentioning [CloudFormer](https://aws.amazon.com/blogs/devops/building-aws-cloudformation-templates-using-cloudformer) back in 2013. 
 
 I started by looking into the service, which is deployed through a CloudFormation stack. Getting a hold of the stack is my first priority ![](/image/cloudformerstack.jpg) and is very straight forward. By pretending to launch the stack I can view it in Designer, export it and start reviewing. If you want to have a look at the full stack for yourself I've uploaded it as a gist here [CloudFormer stack](https://gist.github.com/karimelmel/f5a0e9c975bc9b43fd3371c27662f090).
