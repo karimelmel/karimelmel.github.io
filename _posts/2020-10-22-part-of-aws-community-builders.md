@@ -15,4 +15,4 @@ I will remain neutral when covering cloud security topics, regardless of which c
 
 All information about the program can be found here [https://aws.amazon.com/developer/community/community-builders/](https://aws.amazon.com/developer/community/community-builders/).
 
-![](/AWSCommunityBuildersLogo.png)
+![](/image/AWSCommunityBuildersLogo.png)
