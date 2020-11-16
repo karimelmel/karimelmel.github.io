@@ -44,7 +44,7 @@ Resources:
   EC2InstanceExample:
     Type: AWS::EC2::Instance
     Properties:
-        InstanceType: t3.medium
+        InstanceType: t2.micro
         LaunchTemplate: 
           LaunchTemplateName: IMDSV2
           Version: 1
