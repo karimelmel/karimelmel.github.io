@@ -10,21 +10,27 @@ AWS Systems Manager is long known for its ["Run Command"](https://docs.aws.amazo
 Systems Manager has an ecosystem of documents that can be shared either directly with a specified account or globally for all AWS customers. The documents can be shared from any AWS accounts, this is similar to AMIs and poses the same risk if an untrusted SSM document is ran. There is also the opportunity to be creative with names and one may pretend a document is from a specific vendor, as some vendors provide documents. The only Owner not verified by the AccountId is Amazon.
 ![](/image/ssmdocuments.png)
 
-### Uploading and running a malicious document
+### Uploading a malicious document
 The format for documents is farily simple and scripts can be provided on multiple lines as PowerShell Code. For the purpose of this demo I've setup [Empire C2](https://github.com/bc-security/empire) with a http listener where I've generated an obfuscated payload that I then upload to an SSM document in account A. 
 ![](/image/aws_ssm_document.png)
 
 I then modify the permissions on the document to allow public sharing so it appears for all AWS accounts in the world.
-![](/imahge/sharing.png)
+![](/image/sharing.png)
 
-### Running malicious documents on Windows
-Now logging in to account B I can find the public document and choose to run it. I can also inspect the document, where the obfuscation should alert me. There is also a risk that I have inspected this exact document previously, but that the version has been updated, it could also be that a vendor have shared a document with my account directly and later become compromised. Luckily, the Antimalware Scan Interface (AMSI) for Windows blocks this attempt and I can immediately see it in Systems Manager from the output it provides. 
+### Running malicious documents on Windows EC2s
+Now logging in to account B I can find the public document and choose to run it.
+![](/image/doc.png)
+
+I could also inspect the document, where the obfuscation in the content should alert me but there is a risk that a document you have previously inspected have had the version updated, or it could be that a vendor have shared a document with your account directly and you become a victim of supply chain attack through SSM. Luckily, the Antimalware Scan Interface (AMSI) for Windows blocks the first attempt and I can immediately see it in Systems Manager from the output it provides.
+
 ![](/image/ssmoutput.png)
 
-Now there are [numerous ways](https://blog.f-secure.com/hunting-for-amsi-bypasses/) to bypass this and let's assume a mature attacker would have embedded this and move on to detection. Another way to bypass this could also be to just disable Defender on the line before
+Now there are [numerous ways](https://blog.f-secure.com/hunting-for-amsi-bypasses/) to bypass this and let's assume a mature attacker would have embedded this and move on to detection. For this demo I'll add a simple way to bypass this by just disabling Windows Defender on the line before. 
+
 ![](/image/ssm2.png)
 
 It will then execute the stager successfully. 
+
 ![](/image/empire.png)
 
 ### Protecting against malicious documents
@@ -64,3 +70,5 @@ You will have also have additional visibility through the following mechanisms:
 - Session Activity Logging: https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-logging.html
 
 The combination of all these makes Session Manager and Run Command powerful tools that allows secure remote administration without having to use a bastion host.
+
+Any other ideas for protecting or abusing SSM? Let me know. 
