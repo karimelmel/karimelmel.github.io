@@ -61,7 +61,7 @@ If you use AWS you hopefully already have a way of looking up which accounts you
 
 ![](/image/ssmdocct.png)
 
-Any PowerShell documents executed through Systems Manager Run or Sessions will be logged by PowerShell,[Microsoft has written a great guide for PS logging](https://devblogs.microsoft.com/powershell/powershell-the-blue-team/). Common techniques for detecting exploitation through PowerShell will apply from here. 
+Any PowerShell documents executed through Systems Manager Run or Sessions will be logged by PowerShell. [Microsoft has written a great guide for PS logging](https://devblogs.microsoft.com/powershell/powershell-the-blue-team/) and common techniques for detecting exploitation through PowerShell will apply from here. 
 
 You will have also have additional visibility through the following mechanisms:
 - CloudTrail event names: SendCommand and StartSession
