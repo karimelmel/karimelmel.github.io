@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "AWS Systems Manager Attack and defense strategies"
-date:   2020-11-15
+date:   2020-12-08
 ---
 ## Background
 AWS Systems Manager is long known for its ["Run Command"](https://docs.aws.amazon.com/systems-manager/latest/userguide/execute-remote-commands.html) allowing an attacker to move from AWS API Access to compromise instances that may be within the network. This post will try to cover multiple aspects of Systems Manager, Documents and how to protect and detect techniques leveraging this. This post will focus on Windows Server.
