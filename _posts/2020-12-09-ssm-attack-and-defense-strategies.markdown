@@ -21,7 +21,7 @@ I then modify the permissions on the document to allow public sharing so it appe
 Now logging in to account B I can find the public document and choose to run it.
 ![](/image/doc.png)
 
-I could also inspect the document, where the obfuscation in the content should alert me but there is a risk that a document you have previously inspected have had the version updated, or it could be that a vendor have shared a document with your account directly and you become a victim of supply chain attack through SSM. Luckily, the Antimalware Scan Interface (AMSI) for Windows blocks the first attempt and I can immediately see it in Systems Manager from the output it provides.
+I could also inspect the document, where the obfuscation in the content should alert me. There is a risk that a document you have previously inspected have had the version updated, or it could be that a vendor have shared a document with your account directly and you become a victim of supply chain attack through SSM. Luckily, the Antimalware Scan Interface (AMSI) for Windows blocks the first attempt and I can immediately see it in Systems Manager from the output it provides.
 
 ![](/image/ssmoutput.png)
 
