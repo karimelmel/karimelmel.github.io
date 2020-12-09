@@ -12,20 +12,20 @@ Systems Manager has an ecosystem of documents that can be shared either directly
 
 ### Uploading and running a malicious document
 The format for documents is farily simple and scripts can be provided on multiple lines as PowerShell Code. For the purpose of this demo I've setup [Empire C2](https://github.com/bc-security/empire) with a http listener where I've generated an obfuscated payload that I then upload to an SSM document in account A. 
-![](/aws_ssm_document.png)
+![](/image/aws_ssm_document.png)
 
-I modify the permissions on the document to allow public sharing:
-![](/sharing.png)
+I then modify the permissions on the document to allow public sharing so it appears for all AWS accounts in the world.
+![](/imahge/sharing.png)
 
 ### Running malicious documents on Windows
 Now logging in to account B I can find the public document and choose to run it. I can also inspect the document, where the obfuscation should alert me. There is also a risk that I have inspected this exact document previously, but that the version has been updated, it could also be that a vendor have shared a document with my account directly and later become compromised. Luckily, the Antimalware Scan Interface (AMSI) for Windows blocks this attempt and I can immediately see it in Systems Manager from the output it provides. 
-![](/ssmoutput.png)
+![](/image/ssmoutput.png)
 
 Now there are [numerous ways](https://blog.f-secure.com/hunting-for-amsi-bypasses/) to bypass this and let's assume a mature attacker would have embedded this and move on to detection. Another way to bypass this could also be to just disable Defender on the line before
-![](/ssm2.png)
+![](/image/ssm2.png)
 
 It will then execute the stager successfully. 
-![](/empire.png)
+![](/image/empire.png)
 
 ### Protecting against malicious documents
 As a general best practice, you should avoid allowing the Systems Manager to execute commands as SYSTEM by [disabling its administrative permissions](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-getting-started-ssm-user-permissions.html). You should also restrict which users can use the Run command and which assets they are allowed to use it for. For interactive sessions, you should [restrict which commands can be executed during sessions](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-restrict-command-access.html).
@@ -53,7 +53,7 @@ Due to the inability to specify NotResource in a Service Control Policy, I have 
 ### Detecting execution of malicious documents
 If you use AWS you hopefully already have a way of looking up which accounts you have in your Organization and that you trust, if you use that in combination with a SIEM you can alert whenever a document is executed from an account that your not in control of. CloudTrail will log the AccountId of the account that owns any document being run. 
 
-![](/ssmdocct.png)
+![](/image/ssmdocct.png)
 
 Any PowerShell documents executed through Systems Manager Run or Sessions will be logged by PowerShell,[Microsoft has written a great guide for PS logging](https://devblogs.microsoft.com/powershell/powershell-the-blue-team/). Common techniques for detecting exploitation through PowerShell will apply from here. 
 
