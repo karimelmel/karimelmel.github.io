@@ -13,12 +13,15 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+author: Karim El-Melhaoui
 title: Personal notes on Cybersecurity and Cloud
 description: A place where I share notes, experiences and thoughts related to Cloud and Cybersecurity that you may find useful or result in conversation
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "blog.karims.cloud" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: karimmelhaoui
 github_username:  karimelmel
+
+
 
 # Build settings
 markdown: kramdown
