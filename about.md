@@ -8,5 +8,5 @@ I work as a Cloud Security Architect within financial services in New York City.
 
 You may find me on  [Twitter](https://twitter.com/KarimMelhaoui) and [LinkedIn](https://www.linkedin.com/in/karim-el-melhaoui-34691956/).
 
-![Karim El-Melhaoui](/image/karim1.jpg)
-*Picture taken right before my session at Paranoia Conference in Oslo, Norway 2019*
+![Karim El-Melhaoui](/image/IMG_2384.jpg)
+*Picture taken from my home in NYC where I spend most of my time creating content*
