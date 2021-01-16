@@ -17,7 +17,7 @@ author: Karim El-Melhaoui
 title: Personal notes on Cybersecurity and Cloud
 description: A place where I share notes, experiences and thoughts related to Cloud and Cybersecurity that you may find useful or result in conversation
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "blog.karims.cloud" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://blog.karims.cloud" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: karimmelhaoui
 github_username:  karimelmel
 
