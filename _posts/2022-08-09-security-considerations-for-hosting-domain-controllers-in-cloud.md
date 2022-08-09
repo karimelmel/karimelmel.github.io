@@ -1,5 +1,3 @@
-# Security considerations for hosting domain controllers in cloud
-
 While Domain Controllers might not be something that new organizations, those born in the cloud would rely on today, it seems common for most existing organizations that seek to migrate.
 
 Through my years of working, I’ve always had respect for Domain Controllers and the value it possess both from an availability perspective but more importantly when it comes to integrity and confidentiality. For the purpose of this post I will seek to cover Amazon Web Services and Microsoft Azure primarily, the same principles applies to Google Cloud Platform.
