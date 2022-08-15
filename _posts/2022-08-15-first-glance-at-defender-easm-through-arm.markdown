@@ -1,5 +1,3 @@
-# First glance at Defender External Attack Surface Management through ARM
-
 I haven’t been working with Microsoft Azure for 5 years but tried keeping up to date, which I am grateful for now that I am embarking on a new journey which will increase my usage of Azure. More on the journey later..
 
 To enhance my learning through writing about it, I decided to create a summary of what I discovered while trying to deploy External Attack Surface Management (EASM), which is a *not yet supported* service through Azure Resource Manager (ARM). 
