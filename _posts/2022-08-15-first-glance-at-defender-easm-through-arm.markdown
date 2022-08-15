@@ -4,7 +4,7 @@ To enhance my learning through writing about it, I decided to create a summary o
 
 My first discovery while starting to use Azure after 5 years is that Bicep is now the way to go for efficiently writing Infrastructure as Code (IAC), and I had the perfect case to learn exactly how extensible it can be. 
 
-I made sure to update my CLI and Bicep installation, where and learned that it did not have linter support for EASM, which is fair. Nor does it have CLI support yet from what I could find in the reference.
+I made sure to update my CLI and Bicep installation, where I learned that it does not have linter support for EASM, which is fair. Nor does it have CLI support yet from what I could find in the reference.
 
 # Discovering resource provider and deploying
 
