@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "First glance at Defender EASM through ARM and Azure Bicep"
-date:   2022-01-25
+date:   2022-08-15
 ---
 I haven’t been working with Microsoft Azure for 5 years but tried keeping up to date, which I am grateful for now that I am embarking on a new journey which will increase my usage of Azure. More on the journey later..
 
