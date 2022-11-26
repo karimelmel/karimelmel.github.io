@@ -28,12 +28,12 @@ There are three operations required to configure the persistence:
 
 To streamline enablement of the feature, I wrote two functions, that I plan to further improve and submit to [Microburst](https://github.com/NetSPI/MicroBurst). 
 
-Note that it requires the Az module to be installed for it to retrieve a token:
+This requires the Az module to be installed for it to retrieve a token:
 
 ```powershell
 function Invoke-AzRestBastionShareableLink {
 
-    # Author: Karim El-Melhaoui(@KarimMelhaoui), O3 Cyber
+    # Author: Karim El-Melhaoui(@KarimsCloud), O3 Cyber
     # Description: PowerShell function for creating a shareable link in Azure Bastion
     # A VM must be specified as the link is attached to a VM.
     # https://learn.microsoft.com/en-us/azure/bastion/shareable-link
@@ -172,4 +172,4 @@ Ideally, you should also consider preventing the feature using Azure Policy with
 
 # Summary
 
-Even though this is an intended feature and behavior, security teams should be aware of the feature and implement detections.
+Even though this is an intended feature and behavior, security teams should be aware of the feature and consider detection/prevention methods.
