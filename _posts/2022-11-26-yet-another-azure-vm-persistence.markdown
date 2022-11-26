@@ -12,7 +12,7 @@ I deployed an Azure Bastion to validate, enabled the feature, and generated a Sh
 
 **Example link:** Public link for Bastion - [https://bst-c6bf3220-015d-4d6e-8c19-32ac484e341f.bastion.azure.com/api/shareable-url/074fa24e-8614-47ea-94f7-f9f901003598](https://bst-c6bf3220-015d-4d6e-8c19-32ac484e341f.bastion.azure.com/api/shareable-url/074fa24e-8614-47ea-94f7-f9f901003598) 
 
-(![bastion](https://user-images.githubusercontent.com/26272119/204090894-4c9f4232-215a-472e-90d9-77dab0aba820.png))
+(![bastion](https://user-images.githubusercontent.com/26272119/204090894-4c9f4232-215a-472e-90d9-77dab0aba820.png)
 
 To enable the feature and get a shareable link, the permissions listed below are required to perform this. These permissions are all associated with the Contributor role: 
 
