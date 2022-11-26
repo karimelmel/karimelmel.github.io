@@ -161,5 +161,6 @@ Ideally, you should also consider preventing the feature using Azure Policy with
   }
 }
 ```
+# Summary
 
 Even though this is an intended feature and behavior, security teams should be aware of the feature and implement detections.
