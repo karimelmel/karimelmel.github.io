@@ -12,7 +12,7 @@ I deployed an Azure Bastion to validate, enabled the feature, and generated a Sh
 
 **Example link:** Public link for Bastion - [https://bst-c6bf3220-015d-4d6e-8c19-32ac484e341f.bastion.azure.com/api/shareable-url/074fa24e-8614-47ea-94f7-f9f901003598](https://bst-c6bf3220-015d-4d6e-8c19-32ac484e341f.bastion.azure.com/api/shareable-url/074fa24e-8614-47ea-94f7-f9f901003598) 
 
-(![bastion](https://user-images.githubusercontent.com/26272119/204090894-4c9f4232-215a-472e-90d9-77dab0aba820.png)
+![bastion](https://user-images.githubusercontent.com/26272119/204090894-4c9f4232-215a-472e-90d9-77dab0aba820.png)
 
 To enable the feature and get a shareable link, the permissions listed below are required to perform this. These permissions are all associated with the Contributor role: 
 
@@ -87,7 +87,10 @@ function Invoke-AzRestBastionShareableLink {
 Invoke-AzRestBastionShareableLink
 ```
 
+
 Once the feature is enabled on a Bastion, you can retrieve the links using the function below. The retrieval of the Shareable Link is separated into a separate function as the Shareable Link cannot be retrieved until the operation for enabling it is complete.
+
+
 
 ```powershell
 function Get-AzRestBastionShareableLink {
@@ -118,6 +121,8 @@ function Get-AzRestBastionShareableLink {
 Get-AzRestBastionShareableLink
 ```
 
+
+
 # Detection
 
 The particular operations can be deteted in the AzureActivity log with the KQL query below:
@@ -128,6 +133,8 @@ AzureActivity
 | order by TimeGenerated desc
 | project Caller, CallerIpAddress, OperationName, TimeGenerated, ResourceId
 ```
+
+
 
 # Prevention
 
@@ -161,6 +168,8 @@ Ideally, you should also consider preventing the feature using Azure Policy with
   }
 }
 ```
+
+
 # Summary
 
 Even though this is an intended feature and behavior, security teams should be aware of the feature and implement detections.
