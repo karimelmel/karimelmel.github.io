@@ -95,7 +95,7 @@ Once the feature is enabled on a Bastion, you can retrieve the links using the f
 ```powershell
 function Get-AzRestBastionShareableLink {
 
-    # Author: Karim El-Melhaoui(@KarimMelhaoui), O3 Cyber
+    # Author: Karim El-Melhaoui(@KarimsCloud), O3 Cyber
     # Description: PowerShell function for getting an existing shareable link in Azure Bastion
     # https://learn.microsoft.com/en-us/azure/bastion/shareable-link
 

@@ -9,5 +9,5 @@ Through my years of experience I’ve been working with private, hybrid and publ
 
 Besides work I love exercise, meditation, reading books and traveling. I also spend my free time on a cyber security podcast in Norwegian. 
 
-You may find me on [Twitter](https://twitter.com/KarimMelhaoui) and [LinkedIn](https://www.linkedin.com/in/karim-el-melhaoui-34691956/).
+You may find me on [Twitter](https://twitter.com/KarimsCloud) and [LinkedIn](https://www.linkedin.com/in/karim-el-melhaoui-34691956/).
 ![https://user-images.githubusercontent.com/26272119/184698620-eb20cd49-494e-46b6-ba6d-e65dba677ff3.jpeg](https://user-images.githubusercontent.com/26272119/184698620-eb20cd49-494e-46b6-ba6d-e65dba677ff3.jpeg)
