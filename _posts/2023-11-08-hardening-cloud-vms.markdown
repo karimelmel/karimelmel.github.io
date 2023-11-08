@@ -18,7 +18,7 @@ Microsoft provides the Security Compliance Toolkit (SCT), a collection of tools 
 
 **HardeningKitty**
 
-While considering building my solution based on the different customizations to 'The Microsoft way' I have done over the years, I came across a project that had already done that to the full extent. Rather than Group Policy Backups, HardeningKitty provides a PowerShell module and leverages a CSV file where you can modify the settings and audit the state. This approach gives hassle-free modifications, lightweight packaging, and visibility https://github.com/scipag/HardeningKitty
+While considering building my solution based on the different customizations to 'The Microsoft way' I have done over the years, I came across a project that had already done that to the full extent. Rather than Group Policy Backups, [HardeningKitty](https://github.com/scipag/HardeningKitty) provides a PowerShell module and leverages a CSV file where you can modify the settings and audit the state. This approach gives hassle-free modifications, lightweight packaging, and visibility.
 
 It also comes with a wide variety of pre-defined baselines.
 
