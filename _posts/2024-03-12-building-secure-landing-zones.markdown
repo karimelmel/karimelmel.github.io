@@ -14,9 +14,7 @@ Regardless of which cloud provider you choose, you will be introduced to the con
 
 In this post, we aim to elaborate on the concept of building Landing Zones and how to build them with security by design.
 
-# The concept of Landing Zones
-
-## Introduction to Landing Zones
+# Introduction to Landing Zones
 
 The concept of a landing zone refers to an environment, a segment, and a trust boundary, all of which are supported by a centralized platform.
 
